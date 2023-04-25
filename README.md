@@ -8,7 +8,7 @@
 ## General info
 
 This is a simple snake game using Java Swing to display the game.
-![How game looks](snakePhoto.png)
+![snakePhoto](https://user-images.githubusercontent.com/111003692/234359532-0368b514-c419-4ff9-b5c5-904d4f2f58a1.png)
 
 ## Technologies
 
@@ -19,7 +19,7 @@ Project is created with:
 ## Setup
 
 - Java runtime installed
-- you need to have a folder "highScores" next to snake.jar file. That folder must contain "highscore.dat" file. The file mantains highscores.
+- You need to have a folder "highScores" next to snake.jar file. That folder must contain "highscore.dat" file. The file mantains highscores.
 
 ## How to play the game
 
