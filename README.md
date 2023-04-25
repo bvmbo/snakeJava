@@ -8,7 +8,7 @@
 ## General info
 
 This is a simple snake game using Java Swing to display the game.
-![How game looks](C:\Users\wikto\OneDrive\Pulpit\snakePhoto.png)
+![How game looks](snakePhoto.png)
 
 ## Technologies
 
