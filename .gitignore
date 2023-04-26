@@ -4,7 +4,8 @@ out/
 snake.iml
 todo.txt
 snakePhoto.png
-highScores/
+highscore.dat
+src/META-INF
 !**/src/main/**/out/
 !**/src/test/**/out/
 
