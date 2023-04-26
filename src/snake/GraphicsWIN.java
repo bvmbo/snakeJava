@@ -17,6 +17,8 @@ public class GraphicsWIN extends Graphics{
         Font currentFont = g2d.getFont();
         Font newFont = currentFont.deriveFont(currentFont.getSize() * 1.4F);
 
+        Color darkGreen = new Color(3, 163, 3);
+
         g2d.setColor(Color.black);
         g2d.fillRect(0, 0, Game.width * Game.dimension + 5, Game.height * Game.dimension + 5);
 
@@ -37,6 +39,8 @@ public class GraphicsWIN extends Graphics{
             for(Rectangle r : s.getBody()) {
                 g2d.fill(r);
             }
+            g2d.setColor(darkGreen);
+            g2d.fill(s.getBody().get(0));
         }
         else {
             g2d.setColor(Color.RED);
