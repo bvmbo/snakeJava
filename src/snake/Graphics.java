@@ -22,6 +22,10 @@ implements ActionListener{
 		s = g.getPlayer();
 		f = g.getFood();
 
+		if(g.highScore.equals("")){
+			g.highScore = g.getHighScore();
+		}
+
 		this.addKeyListener(g);
 		this.setFocusable(true);
 		this.setFocusTraversalKeysEnabled(false);

@@ -36,9 +36,7 @@ public class Game implements KeyListener {
 
 	public void start() {
 		graphics.state = "RUNNING";
-		if(highScore.equals("")){
-			highScore = this.getHighScore();
-		}
+
 	}
 
 	public void update() {
@@ -150,13 +148,13 @@ public class Game implements KeyListener {
 			String name = JOptionPane.showInputDialog("You set a new highscore. What is your name?");
 			highScore = name + ":" + score;
 
-			File scoreFile = new File("highScores/highscore.dat");
-			if (!scoreFile.exists()) {
-				try {
-					scoreFile.createNewFile();
-				} catch (IOException e) {
-					e.printStackTrace();
+			File scoreFile = new File("highscore.dat");
+			try{
+				if(!scoreFile.createNewFile()){
+					System.out.println("File already exists.");
 				}
+			} catch (Exception e){
+				e.printStackTrace();
 			}
 
 			FileWriter writeFile;
@@ -181,7 +179,7 @@ public class Game implements KeyListener {
 		BufferedReader reader = null;
 
 		try {
-			readFile = new FileReader("highScores/highscore.dat");
+			readFile = new FileReader("highscore.dat");
 			reader = new BufferedReader(readFile);
 			return reader.readLine();
 		} catch (Exception e) {
