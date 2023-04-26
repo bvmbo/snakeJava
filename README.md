@@ -8,7 +8,7 @@
 ## General info
 
 This is a simple snake game using Java Swing to display the game.
-![snakePhoto](https://user-images.githubusercontent.com/111003692/234359532-0368b514-c419-4ff9-b5c5-904d4f2f58a1.png)
+![snakePhoto](https://user-images.githubusercontent.com/111003692/234528142-c3755e58-5eaf-457b-a550-a54a9dd7b7f7.png)
 
 ## Technologies
 
