@@ -6,6 +6,7 @@ todo.txt
 snakePhoto.png
 highscore.dat
 src/META-INF
+files/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
