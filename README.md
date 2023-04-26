@@ -19,7 +19,6 @@ Project is created with:
 ## Setup
 
 - Java runtime installed
-- You need to have a folder "highScores" next to snake.jar file. That folder must contain "highscore.dat" file. The file mantains highscores.
 
 ## How to play the game
 
