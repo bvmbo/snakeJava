@@ -1,5 +1,6 @@
 package snake;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.*;
@@ -11,8 +12,8 @@ import javax.swing.*;
 public class Game implements KeyListener {
 	private final Snake player;
 	private final Food food;
-	private final Graphics graphics;
-
+	private final Wall wall;
+	private Graphics graphics = null;
 	protected String highScore = "";
 
 	public static final int width = 30;
@@ -23,11 +24,33 @@ public class Game implements KeyListener {
 		JFrame window = new JFrame();
 		player = new Snake();
 		food = new Food(player);
-		graphics = new GraphicsWIN(this); //tworzenie instancji typu Graphics POLIMORFIZM
-		window.add(graphics);
+		wall = new Wall();
+
+		String[] options = { "Easy", "Medium", "Hard"};
+		int controller = JOptionPane.showOptionDialog(
+				null,
+				"Choose a dificulty?",
+				"Sterowanie",
+				JOptionPane.YES_NO_OPTION,
+				JOptionPane.PLAIN_MESSAGE,
+				null,
+				options,
+				options[0]
+		);
+
+		if(controller == 0){
+			graphics = new GraphicsEasy(this); //tworzenie instancji typu Graphics POLIMORFIZM
+			window.add(graphics);
+		} else if(controller == 1){
+			graphics = new GraphicsWIN(this); //tworzenie instancji typu Graphics POLIMORFIZM
+			window.add(graphics);
+		} else{
+			graphics = new GraphicsWIN(this); //tworzenie instancji typu Graphics POLIMORFIZM
+			window.add(graphics);
+		}
 
 		window.setTitle("Snake");
-		window.setSize(width * dimension + 2, height * dimension + dimension + 4);
+		window.setSize(width * dimension + 5, height * dimension + dimension + 4);
 		window.setResizable(false);
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
@@ -36,7 +59,6 @@ public class Game implements KeyListener {
 
 	public void start() {
 		graphics.state = "RUNNING";
-
 	}
 
 	public void update() {
@@ -54,9 +76,16 @@ public class Game implements KeyListener {
 	}
 
 	private boolean check_wall_collision() {
-		if (player.getX() < 0 || player.getX() > width * dimension
+		if (player.getX() < 0 || player.getX() > width * dimension - 20
 				|| player.getY() < 0 || player.getY() > height * dimension) {
 			checkScore();
+			return true;
+		}
+		return false;
+	}
+
+	private boolean check_level_wall_collision(){
+		if(player.getX() == wall.getX() * dimension && player.getY() == wall.getY()){
 			return true;
 		}
 		return false;
@@ -123,6 +152,10 @@ public class Game implements KeyListener {
 
 	public Food getFood() {
 		return food;
+	}
+
+	public Wall getWall() {
+		return wall;
 	}
 
 	private void playSound() {
