@@ -21,7 +21,7 @@ public abstract class Graphics extends JPanel implements ActionListener{
 		s = g.getPlayer();
 		f = g.getFood();
 		wall = g.getWall();
-		
+
 		if(g.highScore.equals("")){
 			g.highScore = g.getHighScore();
 		}
