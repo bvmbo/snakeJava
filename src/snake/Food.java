@@ -20,7 +20,7 @@ public class Food {
 			x = (int)(Math.random() * Game.width - 1);
 			y = (int)(Math.random() * Game.height - 1);
 			
-			for(Rectangle r : player.getBody()){ //TODO can be changed to not allow to spawn food on a player
+			for(Rectangle r : player.getBody()){ 
 				if(r.x == x && r.y == y) {
 					onSnake = true;
 				}
