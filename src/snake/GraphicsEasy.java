@@ -16,12 +16,6 @@ public class GraphicsEasy extends Graphics{
         Font currentFont = g2d.getFont();
         Font newFont = currentFont.deriveFont(currentFont.getSize() * 1.4F);
 
-        Color snakeBodyBlue = new Color(69,114,231);
-        Color snakeHeadBlue = new Color(48, 77, 156);
-        Color boardDarkerGreen = new Color(170,215, 81);
-        Color boardGreen = new Color(162, 209, 73);
-        Color wallColor = new Color(225, 152, 31);
-
         boolean c = false;
 
         for(int i = 0; i < Game.height * Game.dimension; i += 20){
@@ -38,9 +32,6 @@ public class GraphicsEasy extends Graphics{
             }
             c = !c;
         }
-
-        /*g2d.setColor(Color.blue);
-        g2d.fillRect(Game.dimension, 0, Game.dimension,  Game.dimension );*/  //dodawanie klocków
 
         if(Objects.equals(state, "START")) {
             g2d.setColor(Color.BLACK);
@@ -59,7 +50,7 @@ public class GraphicsEasy extends Graphics{
             g2d.fill(s.getBody().get(0));   //ustawianie koloru głowy
 
             g2d.setColor(wallColor);
-            for(Rectangle r : wall.getBody()) {    //ustawianie koloru ciała
+            for(Rectangle r : wall.getWallEasy()) {
                 g2d.fill(r);
             }
 
