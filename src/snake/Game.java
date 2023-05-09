@@ -1,6 +1,5 @@
 package snake;
 
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.*;
@@ -26,10 +25,10 @@ public class Game implements KeyListener {
 		food = new Food(player);
 		wall = new Wall();
 
-		String[] options = { "Easy", "Medium", "Hard"};
+		String[] options = { "Easy", "Hard"};
 		int controller = JOptionPane.showOptionDialog(
 				null,
-				"Choose a dificulty?",
+				"Choose a difficulty",
 				"Sterowanie",
 				JOptionPane.YES_NO_OPTION,
 				JOptionPane.PLAIN_MESSAGE,
@@ -41,11 +40,8 @@ public class Game implements KeyListener {
 		if(controller == 0){
 			graphics = new GraphicsEasy(this); //tworzenie instancji typu Graphics POLIMORFIZM
 			window.add(graphics);
-		} else if(controller == 1){
-			graphics = new GraphicsMedium(this); //tworzenie instancji typu Graphics POLIMORFIZM
-			window.add(graphics);
 		} else{
-			graphics = new GraphicsHard(this); //tworzenie instancji typu Graphics POLIMORFIZM
+			graphics = new GraphicsMedium(this); //tworzenie instancji typu Graphics POLIMORFIZM
 			window.add(graphics);
 		}
 
@@ -67,7 +63,7 @@ public class Game implements KeyListener {
 				playSound();
 				player.grow();
 				food.random_spawn(player);
-			} else if (check_wall_collision() || check_self_collision()) {
+			} else if (check_wall_collision() || check_self_collision() || check_level_wall_collision()) {
 				graphics.state = "END";
 			} else {
 				player.move();
@@ -85,10 +81,30 @@ public class Game implements KeyListener {
 	}
 
 	private boolean check_level_wall_collision(){
-		if(player.getX() == wall.getX() * dimension && player.getY() == wall.getY()){
-			return true;
+		if(graphics instanceof GraphicsEasy){
+			for(int i = 0; i < 17; i++){
+				if((wall.upperWallPosX[i] == player.getX() && wall.upperWallPosY == player.getY()) || (wall.lowerWallPosX[i] == player.getX() && wall.lowerWallPosY == player.getY())){
+					checkScore();
+					return true;
+				}
+			}
+			return false;
+		} else {
+			for(int i = 0; i < 17; i++){
+				if((wall.upperWallPosX[i] == player.getX() && wall.upperWallPosY == player.getY()) || (wall.lowerWallPosX[i] == player.getX() && wall.lowerWallPosY == player.getY())){
+					checkScore();
+					return true;
+				}
+			}
+
+			for(int i = 0; i < 5; i++){
+				if((wall.leftUpperWallPosY[i] == player.getY() && wall.leftVertWallPosX == player.getX()) || (wall.leftLowerWallPosY[i] == player.getY() && wall.leftVertWallPosX == player.getX()) || (wall.rightLowerWallPosY[i] == player.getY() && wall.rightVertWallPosX == player.getX()) || (wall.rightUpperWallPosY[i] == player.getY() && wall.rightVertWallPosX == player.getX())){
+					checkScore();
+					return true;
+				}
+			}
+			return false;
 		}
-		return false;
 	}
 
 	private boolean check_food_collision() {
@@ -176,6 +192,7 @@ public class Game implements KeyListener {
 	}
 
 	public void checkScore() {
+		System.out.println("tutaj2");
 		int score = player.getBody().size() - 3;
 		if (score > Integer.parseInt(highScore.split(":")[1])) {
 			String name = JOptionPane.showInputDialog("You set a new highscore. What is your name?");
@@ -208,6 +225,7 @@ public class Game implements KeyListener {
 	}
 
 	public String getHighScore() {
+		System.out.println("tutaj1");
 		FileReader readFile;
 		BufferedReader reader = null;
 
