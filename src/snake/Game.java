@@ -42,10 +42,10 @@ public class Game implements KeyListener {
 			graphics = new GraphicsEasy(this); //tworzenie instancji typu Graphics POLIMORFIZM
 			window.add(graphics);
 		} else if(controller == 1){
-			graphics = new GraphicsWIN(this); //tworzenie instancji typu Graphics POLIMORFIZM
+			graphics = new GraphicsMedium(this); //tworzenie instancji typu Graphics POLIMORFIZM
 			window.add(graphics);
 		} else{
-			graphics = new GraphicsWIN(this); //tworzenie instancji typu Graphics POLIMORFIZM
+			graphics = new GraphicsHard(this); //tworzenie instancji typu Graphics POLIMORFIZM
 			window.add(graphics);
 		}
 
