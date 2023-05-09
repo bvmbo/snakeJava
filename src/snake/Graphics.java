@@ -1,5 +1,6 @@
 package snake;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -11,6 +12,12 @@ public abstract class Graphics extends JPanel implements ActionListener{
 	protected Game game;
 	protected Wall wall;
 
+	protected Color snakeBodyBlue = new Color(69,114,231);
+	protected Color snakeHeadBlue = new Color(48, 77, 156);
+	protected Color boardDarkerGreen = new Color(170,215, 81);
+	protected Color boardGreen = new Color(162, 209, 73);
+	protected Color wallColor = new Color(225, 152, 31);
+
 	private Timer t = new Timer(100, this);
 
 	public Graphics(Game g) {
@@ -20,9 +27,11 @@ public abstract class Graphics extends JPanel implements ActionListener{
 		game = g;
 		s = g.getPlayer();
 		f = g.getFood();
+
 		wall = g.getWall();
 
 		if(g.highScore.equals("")){
+			System.out.println("tutaj");
 			g.highScore = g.getHighScore();
 		}
 
