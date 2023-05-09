@@ -15,7 +15,7 @@ public class Snake {
 		body = new ArrayList<>();
 
 		Rectangle temp = new Rectangle(Game.dimension, Game.dimension);
-		temp.setLocation(Game.width / 2 * Game.dimension, Game.height / 2 * Game.dimension);
+		temp.setLocation(w / 2 * d, h / 2 * d);
 		body.add(temp);
 
 		temp = new Rectangle(d, d);
