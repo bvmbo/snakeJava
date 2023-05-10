@@ -8,6 +8,7 @@
 ## General info
 
 This is a simple snake game using Java Swing to display the game.
+
 ![showOption](https://github.com/bvmbo/snakeJava/assets/111003692/40d9a25b-f0ed-4791-9994-5baa7abfc48d)
 ![easy](https://github.com/bvmbo/snakeJava/assets/111003692/d25e29d9-fdf0-4ed3-a8ef-28541e257a31)
 ![medium](https://github.com/bvmbo/snakeJava/assets/111003692/78bfd60f-3aea-4ae0-92fc-b31ea2c569d0)
