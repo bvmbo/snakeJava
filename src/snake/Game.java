@@ -1,5 +1,6 @@
 package snake;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.*;
@@ -11,7 +12,9 @@ import javax.swing.*;
 public class Game implements KeyListener {
 	private final Snake player;
 	private final Food food;
-	private final Wall wall;
+	private final Wall wall = new Wall();
+	private final Rectangle[] wallMedium = wall.getWallMedium();
+	private final Rectangle[] wallHard = wall.getWallHard();
 	private Graphics graphics = null;
 	protected String highScore = "";
 
@@ -23,9 +26,9 @@ public class Game implements KeyListener {
 		JFrame window = new JFrame();
 		player = new Snake();
 		food = new Food(player);
-		wall = new Wall();
 
-		String[] options = { "Easy", "Hard"};
+
+		String[] options = { "Easy","Medium", "Hard"};
 		int controller = JOptionPane.showOptionDialog(
 				null,
 				"Choose a difficulty",
@@ -40,8 +43,11 @@ public class Game implements KeyListener {
 		if(controller == 0){
 			graphics = new GraphicsEasy(this); //tworzenie instancji typu Graphics POLIMORFIZM
 			window.add(graphics);
-		} else{
+		} else if(controller == 1){
 			graphics = new GraphicsMedium(this); //tworzenie instancji typu Graphics POLIMORFIZM
+			window.add(graphics);
+		} else {
+			graphics = new GraphicsHard(this); //tworzenie instancji typu Graphics POLIMORFIZM
 			window.add(graphics);
 		}
 
@@ -81,27 +87,14 @@ public class Game implements KeyListener {
 	}
 
 	private boolean check_level_wall_collision(){
-		if(graphics instanceof GraphicsEasy){
-			for(int i = 0; i < 17; i++){
-				if((wall.upperWallPosX[i] == player.getX() && wall.upperWallPosY == player.getY()) || (wall.lowerWallPosX[i] == player.getX() && wall.lowerWallPosY == player.getY())){
-					checkScore();
-					return true;
-				}
+		if(graphics instanceof GraphicsMedium){
+			if(player.getBody().get(0).intersects(wallMedium[0]) || player.getBody().get(0).intersects(wallMedium[1])){
+				return true;
 			}
 			return false;
 		} else {
-			for(int i = 0; i < 17; i++){
-				if((wall.upperWallPosX[i] == player.getX() && wall.upperWallPosY == player.getY()) || (wall.lowerWallPosX[i] == player.getX() && wall.lowerWallPosY == player.getY())){
-					checkScore();
-					return true;
-				}
-			}
-
-			for(int i = 0; i < 5; i++){
-				if((wall.leftUpperWallPosY[i] == player.getY() && wall.leftVertWallPosX == player.getX()) || (wall.leftLowerWallPosY[i] == player.getY() && wall.leftVertWallPosX == player.getX()) || (wall.rightLowerWallPosY[i] == player.getY() && wall.rightVertWallPosX == player.getX()) || (wall.rightUpperWallPosY[i] == player.getY() && wall.rightVertWallPosX == player.getX())){
-					checkScore();
-					return true;
-				}
+			if(player.getBody().get(0).intersects(wallHard[0]) || player.getBody().get(0).intersects(wallHard[1]) || player.getBody().get(0).intersects(wallHard[2]) || player.getBody().get(0).intersects(wallHard[3]) || player.getBody().get(0).intersects(wallHard[4]) || player.getBody().get(0).intersects(wallHard[5])){
+				return true;
 			}
 			return false;
 		}
@@ -192,7 +185,6 @@ public class Game implements KeyListener {
 	}
 
 	public void checkScore() {
-		System.out.println("tutaj2");
 		int score = player.getBody().size() - 3;
 		if (score > Integer.parseInt(highScore.split(":")[1])) {
 			String name = JOptionPane.showInputDialog("You set a new highscore. What is your name?");
@@ -225,7 +217,6 @@ public class Game implements KeyListener {
 	}
 
 	public String getHighScore() {
-		System.out.println("tutaj1");
 		FileReader readFile;
 		BufferedReader reader = null;
 
