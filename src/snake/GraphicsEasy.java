@@ -40,7 +40,7 @@ public class GraphicsEasy extends Graphics{
         }
         else if(Objects.equals(state, "RUNNING")) {
             g2d.setColor(Color.red); //ustawianie pozycji i koloru jabłka
-            g2d.fillRect(f.getX() * Game.dimension, f.getY() * Game.dimension, Game.dimension, Game.dimension);
+            g2d.fill(f.getF());
 
             g2d.setColor(snakeBodyBlue);
             for(Rectangle r : s.getBody()) {    //ustawianie koloru ciała

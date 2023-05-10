@@ -43,7 +43,7 @@ public class GraphicsMedium extends Graphics{
         }
         else if(Objects.equals(state, "RUNNING")) {
             g2d.setColor(Color.red); //ustawianie pozycji i koloru jabłka
-            g2d.fillRect(f.getX() * Game.dimension, f.getY() * Game.dimension, Game.dimension, Game.dimension);
+            g2d.fill(f.getF());
 
             g2d.setColor(snakeBodyBlue);
             for(Rectangle r : s.getBody()) {    //ustawianie koloru ciała
@@ -56,7 +56,6 @@ public class GraphicsMedium extends Graphics{
             for(Rectangle r : wall.getWallMedium()) {
                 g2d.fill(r);
             }
-//            g2d.fill(wall.getWallMedium());
 
             g2d.setColor(Color.BLACK);
             g2d.setFont(newFont);           //ustawianie napisu oraz jego koloru
