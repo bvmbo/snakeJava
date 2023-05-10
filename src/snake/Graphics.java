@@ -31,7 +31,6 @@ public abstract class Graphics extends JPanel implements ActionListener{
 		wall = g.getWall();
 
 		if(g.highScore.equals("")){
-			System.out.println("tutaj");
 			g.highScore = g.getHighScore();
 		}
 
