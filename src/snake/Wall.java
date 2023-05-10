@@ -20,7 +20,6 @@ public class Wall {
         r[1] = new Rectangle(d * 15, d);
         r[1].setLocation(h /2 * d - 8 * d, ((h / 2) * d) + (6 * d));
 
-
         return r;
     }
     public Rectangle[] getWallHard() {
