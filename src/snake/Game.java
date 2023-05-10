@@ -31,7 +31,7 @@ public class Game implements KeyListener {
 		int controller = JOptionPane.showOptionDialog(
 				null,
 				"Choose a difficulty",
-				"Sterowanie",
+				"Difficulty",
 				JOptionPane.YES_NO_OPTION,
 				JOptionPane.PLAIN_MESSAGE,
 				null,
