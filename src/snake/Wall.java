@@ -5,100 +5,45 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Wall {
-    private ArrayList<Rectangle> wallEasy;
-    private ArrayList<Rectangle> wallHard;
     private int w = Game.width;
     private int h = Game.height;
     private int d = Game.dimension;
 
-    public int[] lowerWallPosX = new int[17];
-    public int lowerWallPosY = 180;
-    public int[] upperWallPosX = new int[17];
-    public int upperWallPosY = 420;
-
-    public int[] leftUpperWallPosY = new int[5];
-    public int[] leftLowerWallPosY = new int[5];
-    public int[] rightUpperWallPosY = new int[5];
-    public int[] rightLowerWallPosY = new int[5];
-    public int leftVertWallPosX = 460;
-    public int rightVertWallPosX = 120;
-
     public Wall() {}
 
-    public ArrayList<Rectangle> getWallEasy() {
-        wallEasy = new ArrayList<>();
-        Rectangle tempE;
+    public Rectangle[] getWallMedium() {
+        Rectangle[] r = new Rectangle[2];
 
-        //lower easy wall
-        for(int i = 0; i < 17; i++){
-            tempE = new Rectangle(d, d);
-            tempE.setLocation((w - i - 8) * d, ((h / 2) * d) + (6 * d));
-            lowerWallPosX[i] = (w - i - 8) * d;
-            wallEasy.add(tempE);
-        }
+        r[0] = new Rectangle(d * 15, d);
+        r[0].setLocation(h /2 * d - 8 * d, 9 * d);
 
-        //upper easy wall
-        for(int i = 0; i < 17; i++){
-            tempE = new Rectangle(d, d);
-            tempE.setLocation((w - i - 8) * d, ((h / 2) * d) - (6 * d));
-            upperWallPosX[i] = (w - i - 8) * d;
-            wallEasy.add(tempE);
-        }
+        r[1] = new Rectangle(d * 15, d);
+        r[1].setLocation(h /2 * d - 8 * d, ((h / 2) * d) + (6 * d));
 
-        return wallEasy;
+
+        return r;
     }
-    public ArrayList<Rectangle> getWallHard() {
-        wallHard = new ArrayList<>();
-        Rectangle tempH;
+    public Rectangle[] getWallHard() {
+        Rectangle[] r = new Rectangle[6];
 
-        //hard lower wall
-        for(int i = 0; i < 17; i++){
-            tempH = new Rectangle(d, d);
-            tempH.setLocation((w - i - 8) * d, ((h / 2) * d) + (6 * d));
-            lowerWallPosX[i] = (w - i - 8) * d;
-            wallHard.add(tempH);
-        }
+        r[0] = new Rectangle(d * 15, d); // lower wall
+        r[0].setLocation(h /2 * d - 8 * d, 9 * d);
 
-        //hard upper wall
-        for(int i = 0; i < 17; i++){
-            tempH = new Rectangle(d, d);
-            tempH.setLocation((w - i - 8) * d, ((h / 2) * d) - (6 * d));
-            upperWallPosX[i] = (w - i - 8) * d;
-            wallHard.add(tempH);
-        }
+        r[1] = new Rectangle(d * 15, d); // upper wall
+        r[1].setLocation(h /2 * d - 8 * d, ((h / 2) * d) + (6 * d));
 
-        //hard left upper wall
-        for(int i = 0; i < 5; i++){
-            tempH = new Rectangle(d, d);
-            tempH.setLocation((w - 24) * d, ((h / 2) * d) - (6 * d) + i * d);
-            leftUpperWallPosY[i] = ((h / 2) * d) - (6 * d) + i * d;
-            wallHard.add(tempH);
-        }
+        r[2] = new Rectangle(d, d * 5); // left upper wall
+        r[2].setLocation(6 * d,9 * d);
 
-        //hard left lower wall
-        for(int i = 0; i < 5; i++){
-            tempH = new Rectangle(d, d);
-            tempH.setLocation((w - 24) * d, ((h / 2) * d) + (6 * d) - i * d);
-            leftLowerWallPosY[i] = ((h / 2) * d) + (6 * d) - i * d;
-            wallHard.add(tempH);
-        }
+        r[3] = new Rectangle(d, d * 5); // left lower wall
+        r[3].setLocation(6 * d,17 * d);
 
-        //hard right upper wall
-        for(int i = 0; i < 5; i++){
-            tempH = new Rectangle(d, d);
-            tempH.setLocation((w - 7) * d, ((h / 2) * d) - (6 * d) + i * d);
-            rightUpperWallPosY[i] = ((h / 2) * d) - (6 * d) + i * d;
-            wallHard.add(tempH);
-        }
+        r[4] = new Rectangle(d, d * 5); // right upper wall
+        r[4].setLocation(21 * d, 9 * d);
 
-        //hard right lower wall
-        for(int i = 0; i < 5; i++){
-            tempH = new Rectangle(d, d);
-            tempH.setLocation((w - 7) * d, ((h / 2) * d) + (6 * d) - i * d);
-            rightLowerWallPosY[i] = ((h / 2) * d) + (6 * d) - i * d;
-            wallHard.add(tempH);
-        }
+        r[5] = new Rectangle(d, d * 5); // right lower wall
+        r[5].setLocation(21 * d, 17 * d);
 
-        return wallHard;
+        return r;
     }
 }
