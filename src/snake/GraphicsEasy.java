@@ -49,11 +49,6 @@ public class GraphicsEasy extends Graphics{
             g2d.setColor(snakeHeadBlue);
             g2d.fill(s.getBody().get(0));   //ustawianie koloru głowy
 
-            g2d.setColor(wallColor);
-            for(Rectangle r : wall.getWallEasy()) {
-                g2d.fill(r);
-            }
-
             g2d.setColor(Color.BLACK);
             g2d.setFont(newFont);           //ustawianie napisu oraz jego koloru
             g2d.drawString("Score: " + (s.getBody().size() - 3), Game.dimension, Game.dimension);

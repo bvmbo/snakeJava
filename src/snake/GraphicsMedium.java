@@ -53,9 +53,10 @@ public class GraphicsMedium extends Graphics{
             g2d.fill(s.getBody().get(0));   //ustawianie koloru głowy
 
             g2d.setColor(wallColor);
-            for(Rectangle r : wall.getWallHard()) {
+            for(Rectangle r : wall.getWallMedium()) {
                 g2d.fill(r);
             }
+//            g2d.fill(wall.getWallMedium());
 
             g2d.setColor(Color.BLACK);
             g2d.setFont(newFont);           //ustawianie napisu oraz jego koloru
