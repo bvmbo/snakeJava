@@ -27,7 +27,6 @@ public class Game implements KeyListener {
 		player = new Snake();
 		food = new Food(player);
 
-
 		String[] options = { "Easy","Medium", "Hard"};
 		int controller = JOptionPane.showOptionDialog(
 				null,
@@ -52,7 +51,7 @@ public class Game implements KeyListener {
 		}
 
 		window.setTitle("Snake");
-		window.setSize(width * dimension + 5, height * dimension + dimension + 4);
+		window.setSize(width * dimension + dimension - 6, height * dimension + dimension + 17);
 		window.setResizable(false);
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
@@ -79,7 +78,7 @@ public class Game implements KeyListener {
 
 	private boolean check_wall_collision() {
 		if (player.getX() < 0 || player.getX() > width * dimension - 20
-				|| player.getY() < 0 || player.getY() > height * dimension) {
+				|| player.getY() < 0 || player.getY() > height * dimension - 20) {
 			checkScore();
 			return true;
 		}
@@ -92,12 +91,13 @@ public class Game implements KeyListener {
 				return true;
 			}
 			return false;
-		} else {
+		} else if(graphics instanceof GraphicsHard) {
 			if(player.getBody().get(0).intersects(wallHard[0]) || player.getBody().get(0).intersects(wallHard[1]) || player.getBody().get(0).intersects(wallHard[2]) || player.getBody().get(0).intersects(wallHard[3]) || player.getBody().get(0).intersects(wallHard[4]) || player.getBody().get(0).intersects(wallHard[5])){
 				return true;
 			}
 			return false;
 		}
+		return false;
 	}
 
 	private boolean check_food_collision() {
