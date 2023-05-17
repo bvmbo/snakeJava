@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Wall {
-    private int w = Game.width;
     private int h = Game.height;
     private int d = Game.dimension;
 
@@ -15,10 +14,10 @@ public class Wall {
         Rectangle[] r = new Rectangle[2];
 
         r[0] = new Rectangle(d * 15, d);
-        r[0].setLocation(h /2 * d - 8 * d, 9 * d);
+        r[0].setLocation(h / 2 * d - 8 * d, 9 * d);
 
         r[1] = new Rectangle(d * 15, d);
-        r[1].setLocation(h /2 * d - 8 * d, ((h / 2) * d) + (6 * d));
+        r[1].setLocation(h / 2 * d - 8 * d, ((h / 2) * d) + (6 * d));
 
         return r;
     }
