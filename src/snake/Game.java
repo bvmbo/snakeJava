@@ -87,13 +87,15 @@ public class Game implements KeyListener {
 
 	private boolean check_level_wall_collision(){
 		if(graphics instanceof GraphicsMedium){
-			if(player.getBody().get(0).intersects(wallMedium[0]) || player.getBody().get(0).intersects(wallMedium[1])){
-				return true;
+			for(Rectangle rect: wallMedium){
+				if(player.getBody().get(0).intersects(rect))
+					return true;
 			}
 			return false;
 		} else if(graphics instanceof GraphicsHard) {
-			if(player.getBody().get(0).intersects(wallHard[0]) || player.getBody().get(0).intersects(wallHard[1]) || player.getBody().get(0).intersects(wallHard[2]) || player.getBody().get(0).intersects(wallHard[3]) || player.getBody().get(0).intersects(wallHard[4]) || player.getBody().get(0).intersects(wallHard[5])){
-				return true;
+			for(Rectangle rect : wallHard){
+				if(player.getBody().get(0).intersects(rect))
+					return true;
 			}
 			return false;
 		}
