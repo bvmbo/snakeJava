@@ -27,7 +27,7 @@ Project is created with:
 ## How to play the game
 
 - Run snake.jar.
-- Choode difficulty.
+- Choose difficulty.
 - Orange walls kills the player.
 - Start playing with the WSAD keys.
 - Eat red apples to grow your snake.
